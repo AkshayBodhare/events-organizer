@@ -1,12 +1,12 @@
 import json
-import dateutil.parser as datep
+#import dateutil.parser as datep
 
 def clean_sentences(sentences):
     """Remove the whitespace at the ends of the words."""
     for sent in sentences:
         for count in range(len(sent)):
             sent[count] = sent[count].strip()
-            
+
 def tokenize_sent(sentences, tokeniser):
     """Tokenize the sentences using regexp."""
     sentences = [tokeniser.tokenize(sent) for sent in sentences]
@@ -17,7 +17,7 @@ def load_venues(path):
     with open(path) as ft:
         venues = json.load(ft)
     return venues
-    
+
 def reduce_str(string):
     """Remove spaces, dots, hyphens, apostrophes and lower the string."""
     string = string.replace(' ', '').replace('.', '')
@@ -45,11 +45,11 @@ def check_venue(relevant, venues):
 def clean_relevant(relevant, skip_tag):
     """Removes the words in skip_tag from relevant."""
     for word in skip_tag:
-        while(word in relevant):
+        while word in relevant:
             relevant.remove(word)
 
-def check_time(text):
-    """Checks the time from the text."""
+"""def check_time(text):
+    \"""Checks the time from the text.\"""
     text = text.replace('.', ' ').replace('"', ' ').replace('\'', '')
     text = text.replace('?', ' ').replace('\n', ' ').replace('\t', ' ')
     try:
@@ -57,3 +57,4 @@ def check_time(text):
     except ValueError:
         event_time = 'Couldn\'t extract time properly.'
     return event_time
+"""
